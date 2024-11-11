@@ -1,0 +1,1 @@
+memo() stops the rerendering of child components, when the props and states of child components not getting changed
