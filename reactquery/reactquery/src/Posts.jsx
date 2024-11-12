@@ -5,14 +5,14 @@ function Posts() {
   const { data, error, isLoading } = useQuery({
     queryKey: ['posts'], 
     queryFn: () => fetch('https://jsonplaceholder.typicode.com/posts').then(res => res.json()),
-    staleTime: 60000, // Cache data for 1 minute
-    refetchOnWindowFocus: false, // Disable refetching on window focus
+    staleTime: 60000, 
+    refetchOnWindowFocus: false, 
   });
 
   console.log(data)
 
   if (isLoading) {
-    return <div>Loading....</div>; 
+    return <div>Loading...</div>; 
   }
 
   if (error) {
@@ -44,4 +44,4 @@ export default Posts;
 //     })
 //     .then((res)=>res.json())
 //     .then((data)=>data),
-// })
+//  })

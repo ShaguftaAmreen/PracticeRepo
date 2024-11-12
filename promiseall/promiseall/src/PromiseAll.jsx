@@ -20,24 +20,27 @@ const PromiseAll = () => {
         setData(data1.data);
         setGetData(data2.data);
       } catch (error) {
-        console.error("Error fetching data", error);
+        console.error(
+          `Error fetching data`,
+          error
+        );
       }
     }
     fetchData();
   }, []);
 
-  // console.log(data);
-  // console.log(getData);
+  console.log(data);
+  console.log(getData);
 
   return (
     <div>
       {data.map((ele) => (
-        <span>{ele.name} &nbsp; &nbsp;</span>
+        <span key={ele.id}>{ele.name} &nbsp; &nbsp;</span>
       ))}
       <br />
       <h3>
         {getData.map((ele) => (
-          <span>{ele.id} &nbsp; &nbsp;</span>
+          <span key={ele.id}>{ele.id} &nbsp; &nbsp;</span>
         ))}
       </h3>
     </div>
@@ -71,6 +74,6 @@ export default PromiseAll;
 //       });
 //   }, []);
 
-//Leanne Graham    Ervin Howell    Clementine Bauch    Patricia Lebsack  
-//Chelsey Dietrich    Mrs. Dennis Schulist    Kurtis Weissnat  
-//Nicholas Runolfsdottir V    Glenna Reichert    Clementina DuBuque    
+//Leanne Graham    Ervin Howell    Clementine Bauch    Patricia Lebsack
+//Chelsey Dietrich    Mrs. Dennis Schulist    Kurtis Weissnat
+//Nicholas Runolfsdottir V    Glenna Reichert    Clementina DuBuque
