@@ -284,3 +284,33 @@ const App = () => {
 };
 
 export default App;
+
+
+
+https://dummyapi.io/data/v1/user?page=${pageNum}&limit=10
+
+// Function to calculate the binomial coefficient (n choose k)
+function binomialCoeff(n, k) {
+    // Base case: if k is 0 or n, the coefficient is 1
+    if (k === 0 || k === n) {
+        return 1;
+    }
+    // Otherwise, calculate using the formula (n-1 choose k-1) + (n-1 choose k)
+    return binomialCoeff(n - 1, k - 1) + binomialCoeff(n - 1, k);
+}
+
+// Function to print Pascal's Triangle starting from row 1
+function printPascalsTriangle(rows) {
+    for (let n = 1; n <= rows; n++) {  // Start from 1 instead of 0
+        let row = '';
+        for (let k = 0; k < n; k++) {  // We start `k` from 0 and print up to n-1
+            // Calculate binomial coefficient for the current row and position
+            row += binomialCoeff(n - 1, k) + ' ';
+        }
+        // Print the row for Pascal's Triangle
+        console.log(row.trim()); // trim removes any extra spaces at the end
+    }
+}
+
+// Call the function to print 5 rows of Pascal's Triangle
+printPascalsTriangle(5);
