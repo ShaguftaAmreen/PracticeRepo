@@ -3,8 +3,9 @@ import "./App.css";
 import { useMutation } from "@tanstack/react-query";
 
 import axios from "axios";
+//import POSTMethod from './POSTMethod';
 
-function App() {
+function POSTMethod() {
   const [updatedPost, setUpdatedPost] = useState({
     userId: "",
     title: "",
@@ -41,7 +42,7 @@ function App() {
     setUpdatedPost((prev) => ({ ...prev, [name]: [value] }));
   };
 
-  console.log("updated data", updatePostMutation);
+  //console.log("updated data", updatePostMutation);
 
   return (
     <div>
@@ -95,4 +96,4 @@ function App() {
   );
 }
 
-export default App;
+export default POSTMethod;
