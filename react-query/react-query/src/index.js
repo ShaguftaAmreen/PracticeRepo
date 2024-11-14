@@ -6,6 +6,7 @@ import './index.css';
 import { QueryClientProvider, QueryClient } from '@tanstack/react-query';
 import Pagination from './Pagination';
 import PUTMethod from './PUTMethod';
+//import Example from './Example';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root')
@@ -18,6 +19,7 @@ root.render(
     {/* <App /> */}
     {/* <POSTMethod /> */}
     <PUTMethod />
+    {/* <Example /> */}
     <Pagination />
   </QueryClientProvider>
 );

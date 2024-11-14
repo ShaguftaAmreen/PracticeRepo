@@ -5,17 +5,17 @@ import axios from "axios";
 const Pagination = () => {
   const fetchUsers = async (pageNum) => {
     try {
-        // const response = await axios.get(`//https://dummyapi.io/data/v1/user?page=${pageNum}&limit=10`, {
-        //     headers: {
-        //       "app-id": "65fd44d75e980b2387ac22e7",
-        //     },
-        //     // params: {
-        //     //   page: pageNum,
-        //     //   limit: 10,
-        //     // },
-        //   });
+      // const response = await axios.get(`//https://dummyapi.io/data/v1/user?page=${pageNum}&limit=10`, {
+      //     headers: {
+      //       "app-id": "65fd44d75e980b2387ac22e7",
+      //     },
+      //     // params: {
+      //     //   page: pageNum,
+      //     //   limit: 10,
+      //     // },
+      //   });
 
-const response = await axios.get(`https://dummyapi.io/data/v1/user`, {
+      const response = await axios.get(`https://dummyapi.io/data/v1/user`, {
         headers: {
           "app-id": "65fd44d75e980b2387ac22e7",
         },
@@ -51,7 +51,9 @@ const response = await axios.get(`https://dummyapi.io/data/v1/user`, {
         {data.data.map((user) => (
           <div key={user.id} style={{ display: "flex" }}>
             <p style={{ marginRight: "10px" }}>
-              {user.firstName} {user.lastName}
+              <span>{user.title}</span>&nbsp;
+              <span>{user.firstName}</span>&nbsp;
+              <span>{user.lastName}</span>&nbsp;
             </p>
             <p style={{ marginLeft: "10px" }}>
               <img src={`${user.picture}`} alt="pic" />
