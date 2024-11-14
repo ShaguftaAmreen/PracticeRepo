@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import './App.css';
 import { useQuery, useMutation } from '@tanstack/react-query';
@@ -29,10 +29,16 @@ function App() {
 
 console.log("hello world",mutatePost.data)
 
-const handleClick=()=>{
-  mutatePost.mutate({ title: 'First Post', body: 'First Post Body', userId: 1 })
-}
+let [title,setTitle]=useState("")
+let [body,setBody]=useState("")
+let [userId,setUserId]=useState("")
 
+
+
+const handleClick=()=>{
+  mutatePost.mutate({ title, body, userId })
+}
+//() => mutatePost.mutate({ title: 'First Post', body: 'First Post Body', userId: 1 })
   return (
     <div>
       <div>
@@ -47,6 +53,11 @@ const handleClick=()=>{
       </div>
       <hr />
       <div>
+
+        <input type='text' value={title} name="title" onChange={(e)=>{setTitle(e.target.value)}}/><br /><br />
+        <input type='text' value={body} name='body' onChange={(e)=>{setBody(e.target.value)}}/><br /><br />
+        <input type='text' value={userId} name="userId" onChange={(e)=>{setUserId(e.target.value)}}/><br /><br />
+        
         <button onClick={handleClick}>
           Add New Post
         </button>
@@ -54,7 +65,7 @@ const handleClick=()=>{
           {mutatePost.isLoading && <div>Adding new post...</div>}
           {mutatePost.isError && <div>{`Error adding new post!!!`}</div>}
           {mutatePost.data && (
-            <div>{`Success adding new post with title: '${mutatePost.data.body}'`}</div>
+            <div>{`Success adding new post with title: '${mutatePost.data.title}'`}</div>
           )}
         </div>
       </div>
@@ -66,7 +77,7 @@ export default App;
 
 
 
-//() => mutatePost.mutate({ title: 'First Post', body: 'First Post Body', userId: 1 })
+
 
 
 
@@ -77,6 +88,7 @@ export default App;
 // //import logo from './logo.svg';
 // import './App.css';
 // import { useQuery } from '@tanstack/react-query';
+//import { name } from './../node_modules/webpack/lib/dependencies/CommonJsSelfReferenceDependency';
 
 // function App() {
 //   const userData = useQuery({
