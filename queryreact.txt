@@ -314,3 +314,17 @@ function printPascalsTriangle(rows) {
 
 // Call the function to print 5 rows of Pascal's Triangle
 printPascalsTriangle(5);
+
+
+****************************************************
+
+enabled (Optional)
+What it is: Whether the query should run automatically or not. If set to false, 
+the query won’t run until you manually trigger it.
+
+Example: If you only want to fetch data after a user logs in, you
+ can set enabled: false until the user is logged in.
+
+js
+Copy code
+useQuery('posts', fetchPosts, { enabled: isLoggedIn });
