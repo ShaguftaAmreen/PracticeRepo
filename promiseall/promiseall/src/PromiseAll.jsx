@@ -20,10 +20,7 @@ const PromiseAll = () => {
         setData(data1.data);
         setGetData(data2.data);
       } catch (error) {
-        console.error(
-          `Error fetching data`,
-          error
-        );
+        console.error(`Error fetching data`, error);
       }
     }
     fetchData();
@@ -35,7 +32,10 @@ const PromiseAll = () => {
   return (
     <div>
       {data.map((ele) => (
-        <span key={ele.id}>{ele.name} &nbsp; &nbsp;</span>
+        <div key={ele.id}>
+          <span>{ele.address.street} &nbsp; &nbsp;</span>
+          <span>{ele.address.zipcode}</span>
+        </div>
       ))}
       <br />
       <h3>
