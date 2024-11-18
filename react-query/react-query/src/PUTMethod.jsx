@@ -15,8 +15,9 @@ function PUTMethod() {
   const updatePostMutation = useMutation({
     mutationFn: (data) =>
       axios.put(`https://jsonplaceholder.typicode.com/posts/${data.id}`, data),
-    onSuccess: (response) =>
-      console.log("success in put mutation", response.data),
+    onSuccess: (response) =>console.log("success in put mutation", response.data),
+    useErrorBoundary: true,
+    retry: 2,
   });
 
   const handleChange = ({ name, value }) => {
@@ -32,7 +33,10 @@ function PUTMethod() {
         <div>
           <input
             value={updatedPost.id}
-            onChange={(e) => handleChange(e.target)}
+            onChange={(e) => 
+              
+              {console.log("iddddddd",typeof e.target.value)
+              handleChange(e.target)}}
             name="id"
           />
           <br />

@@ -8,6 +8,7 @@ app.use(cors());
 // app.use(express.json({ limit: '10mb' })); // Increase limit if necessary
 
 app.get('/api/products', (req, res) => {
+  
   const products = [
     { id: 1, name: 'Alice', age: 23 },
     { id: 2, name: 'Aliya', age: 23 },

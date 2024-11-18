@@ -328,3 +328,41 @@ Example: If you only want to fetch data after a user logs in, you
 js
 Copy code
 useQuery('posts', fetchPosts, { enabled: isLoggedIn });
+
+***********************************************
+
+import { useQuery } from 'react-query';
+
+function Posts() {
+  const { data, error, isLoading } = useQuery(
+    ['posts', userId], // Query Key
+    () => fetch(`/api/posts?userId=${userId}`).then(res => res.json()), // Query Function
+    {
+      enabled: Boolean(userId), // Run only if userId is present
+      staleTime: 10 * 60 * 1000, // Fresh for 10 minutes
+      cacheTime: 15 * 60 * 1000, // Cache for 15 minutes
+      refetchOnWindowFocus: false, // Don't refetch when window is focused
+      onSuccess: (data) => {
+        console.log('Data fetched successfully', data);
+      },
+      onError: (error) => {
+        console.log('Error fetching data', error);
+      },
+      keepPreviousData: true, // Keep previous data while fetching new
+    }
+  );
+
+  if (isLoading) return <div>Loading...</div>;
+  if (error) return <div>Error fetching data</div>;
+
+  return (
+    <div>
+      <h1>Posts</h1>
+      <ul>
+        {data.map(post => (
+          <li key={post.id}>{post.title}</li>
+        ))}
+      </ul>
+    </div>
+  );
+}

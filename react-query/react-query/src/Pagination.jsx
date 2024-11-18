@@ -30,20 +30,26 @@ const Pagination = () => {
       throw new Error("Error fetching users: " + error.message);
     }
   };
-
+console.log(localStorage.getItem("token"));
+localStorage.setItem("x","hello");
+console.log(localStorage.getItem("x"))
   const [pageNum, setPageNum] = useState(1);
 
   const { data, isLoading, isError, error } = useQuery({
     queryKey: ["users", pageNum],
     queryFn: () => fetchUsers(pageNum),
     keepPreviousData: true,
+    onError: (error) => {
+      console.log("Error creating post:", error);
+    },
   });
-
+  //sessionStorage.setItem("product","products 2");
   if (isLoading) return <div>Loading...</div>;
   if (isError) return <div>Error: {error.message}</div>;
 
   if (!data || !data.data) return <div>No users available.</div>;
   console.log(data.data);
+
   return (
     <div>
       <h1>Users</h1>
@@ -51,9 +57,10 @@ const Pagination = () => {
         {data.data.map((user) => (
           <div key={user.id} style={{ display: "flex" }}>
             <p style={{ marginRight: "10px" }}>
+              <span>{user.id}</span>
               <span>{user.title}</span>&nbsp;
-              <span>{user.firstName}</span>&nbsp;
-              <span>{user.lastName}</span>&nbsp;
+              <span>{user.firstName}</span>
+              <span>{user.lastName}</span>
             </p>
             <p style={{ marginLeft: "10px" }}>
               <img src={`${user.picture}`} alt="pic" />
@@ -70,10 +77,10 @@ const Pagination = () => {
           Previous
         </button>
 
-        <span> Page {pageNum} </span>
+        <span>Page {pageNum}</span>
 
         <button
-          onClick={() => setPageNum((prev) => prev + 1)}
+          onClick={() => setPageNum((prev) => prev)}
           disabled={data.data.length < 10}
         >
           Next
