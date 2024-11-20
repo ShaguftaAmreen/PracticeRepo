@@ -366,3 +366,26 @@ function Posts() {
     </div>
   );
 }
+
+*************************************************
+
+/** @type {import('tailwindcss').Config} */
+module.exports = {
+  content: [
+    "./src/**/*.{js,jsx,ts,tsx}",
+  ],
+  theme: {
+    extend: {},
+  },
+  plugins: [],
+}
+
+After executing the above command, a ‘tailwind.config.js’ will
+ be generated, so paste the below content in this file for the correct configuration.
+
+  Install the required dependencies using the below command:
+
+npm install --save @fortawesome/react-fontawesome @fortawesome/free-solid-svg-icons font-awesome
+
+*************************************************
+
