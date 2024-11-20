@@ -19,20 +19,23 @@ const Pagination = () => {
         headers: {
           "app-id": "65fd44d75e980b2387ac22e7",
         },
-        params: {
+        params: {             
           page: pageNum,
           limit: 10,
         },
       });
+   
+      // params: {
+      //   _start: pageNum,
+      //   _limit: 10,
+      // },
 
       return response.data;
     } catch (error) {
       throw new Error("Error fetching users: " + error.message);
     }
   };
-console.log(localStorage.getItem("token"));
-localStorage.setItem("x","hello");
-console.log(localStorage.getItem("x"))
+
   const [pageNum, setPageNum] = useState(1);
 
   const { data, isLoading, isError, error } = useQuery({
@@ -57,7 +60,7 @@ console.log(localStorage.getItem("x"))
         {data.data.map((user) => (
           <div key={user.id} style={{ display: "flex" }}>
             <p style={{ marginRight: "10px" }}>
-              <span>{user.id}</span>
+              {/* <span>{user.id}</span> */}
               <span>{user.title}</span>&nbsp;
               <span>{user.firstName}</span>
               <span>{user.lastName}</span>
@@ -80,7 +83,7 @@ console.log(localStorage.getItem("x"))
         <span>Page {pageNum}</span>
 
         <button
-          onClick={() => setPageNum((prev) => prev)}
+          onClick={() => setPageNum((prev) => prev+1)}
           disabled={data.data.length < 10}
         >
           Next
@@ -91,3 +94,16 @@ console.log(localStorage.getItem("x"))
 };
 
 export default Pagination;
+
+
+
+
+
+
+
+
+
+
+
+
+
