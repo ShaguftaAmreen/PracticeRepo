@@ -9,6 +9,7 @@ app.use(cors()); // Enable CORS for all routes
 // Middleware to parse JSON
 app.use(express.json());
 
+
 // Connect to the database
 connect();
 
