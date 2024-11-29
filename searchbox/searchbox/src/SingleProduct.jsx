@@ -41,28 +41,3 @@ export default SingleProduct;
 
 
 
-// import React from 'react'
-// import axios from 'axios';
-// import { useQuery } from '@tanstack/react-query';
-
-
-// const SingleProduct = (id) => {
-
-//     const { isLoading, error, data } = useQuery({
-        
-//         queryKey: ['allProducts'],
-//         queryFn: async () => {
-         
-//           const response = await axios.get(`https://dummyjson.com/products/${id}`);
-//           return response.data;
-//         },
-//       });
-
-//   return (
-//     <div>
-      
-//     </div>
-//   )
-// }
-
-// export default SingleProduct

@@ -51,7 +51,7 @@ const SearchBox = ({ data1 }) => {
 
       <Autocomplete
         disablePortal
-        options={data1.map((ele)=>(ele)) || []} 
+        options={data1?.map((ele)=>(ele)) || []} 
         sx={{ width: 300 }}
         onChange={(event, value) => setSelectedCategory(value || '')}
         renderInput={(params) => <TextField {...params} label="Category" />}
@@ -377,6 +377,13 @@ export default SearchBox;
 
 
 //  /*********************************************************/
+
+//*****************Sorting*********** */
+
+//*********** sorting***********//
+
+
+
 // //  import React, { useState } from 'react';
 // //  import { useQuery } from '@tanstack/react-query';
 // //  import axios from 'axios';
@@ -495,7 +502,7 @@ export default SearchBox;
 
 
 
-
+//Sorting
 
 
 
@@ -522,9 +529,7 @@ export default SearchBox;
 //     queryKey: ['allProducts', sortOrder, currentPage],
 //     queryFn: async () => {
 //       const response = await axios.get(
-//         `https://dummyjson.com/products?sortBy=id&order=${sortOrder}&limit=${itemsPerPage}&skip=${
-//           (currentPage - 1) * itemsPerPage
-//         }`
+//         `https://dummyjson.com/products?sortBy=id&order=${sortOrder}&limit=${itemsPerPage}&skip=${(currentPage - 1) * itemsPerPage}`
 //       );
 //       return response.data;
 //     },
